@@ -1,0 +1,522 @@
+/* ==================================================
+   1. CONFIGURAÇÕES GLOBAIS & VARIÁVEIS
+================================================== */
+:root {
+    --white: #ffffff;
+    --white-soft: rgba(255, 255, 255, 0.12);
+    --white-glow: rgba(255, 255, 255, 0.35);
+    --bg: #050505;
+    --card: #0f0f0f;
+    --card-2: #141414;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #ffffff;
+    --text-soft: #8b8b8b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.03);
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--text);
+    cursor: none;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+    background: 
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.04), transparent 30%),
+        #050505;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -2;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.06), transparent 20%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.04), transparent 20%),
+        radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.04), transparent 25%);
+    animation: backgroundMove 12s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundMove {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-20px) scale(1.05); }
+}
+
+/* ==================================================
+   2. BARRA DE PROGRESSO DA MÚSICA (FIXA NO TOPO)
+================================================== */
+.music-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.02);
+    z-index: 999999;
+    overflow: hidden;
+}
+
+.music-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 5px rgba(255, 255, 255, 0.4);
+    transition: width 0.2s linear;
+}
+
+/* ==================================================
+   3. ELEMENTOS DINÂMICOS (PARTÍCULAS & CURSOR)
+================================================== */
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    z-index: 999999;
+    pointer-events: none;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.4);
+    transition: width .2s ease, height .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.cursor.active {
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* ==================================================
+   4. HEADER, NAVBAR & BOTÕES DE CONTROLE
+================================================== */
+.navbar {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    margin: 20px auto 0;
+    padding: 12px 26px;
+    border-radius: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(15, 15, 15, 0.45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.45), inset 0 0 20px rgba(255, 255, 255, 0.02);
+    transition: box-shadow .35s ease;
+}
+
+.navbar:hover {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55), 0 0 25px rgba(255, 255, 255, 0.05);
+}
+
+.navbar a {
+    position: relative;
+    text-decoration: none;
+    color: #8b8b8b;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+    border-radius: 40px;
+    transition: color .3s ease, background .3s ease, transform .3s ease;
+}
+
+.navbar a:hover {
+    color: white;
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.navbar a.active {
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.04), 0 0 15px rgba(255, 255, 255, 0.03);
+}
+
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 6px;
+    width: 0%;
+    height: 2px;
+    border-radius: 10px;
+    background: white;
+    transform: translateX(-50%);
+    transition: width .35s ease;
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+    width: 60%;
+}
+
+.divisor {
+    width: 1px;
+    height: 24px;
+    margin: 0 16px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.music-text-status {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #8b8b8b;
+    margin-right: 12px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    animation: textPulse 2s ease-in-out infinite alternate;
+    opacity: 0.7;
+    display: inline-block !important;
+}
+
+@keyframes textPulse {
+    0% { opacity: 0.4; text-shadow: 0 0 0px rgba(255,255,255,0); }
+    100% { opacity: 0.8; text-shadow: 0 0 4px rgba(255,255,255,0.1); }
+}
+
+.botao-musica {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: #8b8b8b;
+    font-size: 16px;
+    padding: 0;
+    transition: color .3s ease, transform .3s ease;
+}
+
+.botao-musica:hover {
+    color: #ffffff;
+    transform: scale(1.15);
+}
+
+.botao-musica i {
+    color: inherit !important;
+}
+
+/* ==================================================
+   5. CONTAINER PRINCIPAL & TÍTULOS
+================================================== */
+.setup-title {
+    margin-top: 140px;
+    text-align: center;
+    font-family: 'Bowlby One', sans-serif;
+    font-size: 60px;
+    letter-spacing: 4px;
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+.setup-subtitle {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    color: var(--text-soft);
+    font-size: 15px;
+}
+
+.setup-group {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 25px;
+    border-radius: 22px;
+    background: rgba(15, 15, 15, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.group-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    font-size: 22px;
+    color: white;
+}
+
+.setup-title,
+.setup-subtitle,
+.setup-group {
+    animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================================================
+   6. GRIDS & CARDS (MONITORES, ÁUDIO, PERIFÉRICOS)
+================================================== */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 22px;
+}
+
+.setup-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+.setup-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.20);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.06);
+}
+
+.setup-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+#main-setup .setup-card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+#main-setup .setup-card:hover {
+    transform: none;
+}
+
+#main-setup .setup-card img {
+    height: 580px;
+    border-radius: 18px;
+}
+
+.card-info {
+    padding: 18px;
+}
+
+.card-info h3 {
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.card-info p {
+    color: var(--text-soft);
+    font-size: 14px;
+}
+
+.badge {
+    float: right;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.10);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.copy-mini {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 11px;
+    animation: fadeMini .25s ease;
+}
+
+@keyframes fadeMini {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================================================
+   7. SEÇÃO DE HARDWARE
+================================================== */
+.hardware-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.hardware-card {
+    position: relative;
+    padding: 20px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+.hardware-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.20);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.06);
+}
+
+.hardware-card h3 {
+    margin-bottom: 8px;
+    font-size: 17px;
+    color: white;
+}
+
+.hardware-card p {
+    color: var(--text-soft);
+    font-size: 14px;
+}
+
+/* ==================================================
+   8. FOOTER
+================================================== */
+.setup-footer {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--text-soft);
+}
+
+/* ==================================================
+   9. CUSTOM SCROLLBAR (WEBKIT)
+================================================== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* ==================================================
+   10. RESPONSIVIDADE (MOBILE UNIFICADO)
+================================================== */
+@media (max-width: 768px) {
+    body {
+        cursor: auto;
+    }
+
+    .cursor, .divisor, .music-text-status {
+        display: none !important;
+    }
+
+    .navbar {
+        top: 10px;
+        width: 95%;
+        padding: 10px 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 6px;
+        border-radius: 40px;
+    }
+
+    .navbar a {
+        font-size: 12px;
+        padding: 8px 10px;
+        white-space: nowrap;
+    }
+
+    .botao-musica {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .setup-title {
+        margin-top: 120px;
+        font-size: 40px;
+        letter-spacing: 2px;
+    }
+
+    .setup-subtitle {
+        font-size: 13px;
+        padding: 0 10px;
+    }
+
+    .setup-group {
+        margin: 15px;
+        padding: 16px;
+    }
+
+    .group-title {
+        font-size: 18px;
+    }
+
+    .cards-grid,
+    .hardware-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .setup-card img {
+        height: 200px;
+    }
+
+    #main-setup .setup-card img {
+        height: 260px;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 18px;
+    }
+
+    .card-info h3,
+    .hardware-card h3 {
+        font-size: 16px;
+    }
+
+    .card-info p,
+    .hardware-card p {
+        font-size: 13px;
+    }
+
+    .hardware-card {
+        padding: 16px;
+    }
+
+    .setup-footer {
+        font-size: 12px;
+        padding: 20px;
+    }
+}

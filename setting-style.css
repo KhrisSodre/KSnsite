@@ -1,0 +1,705 @@
+/* ==================================================
+   1. RESET / CONFIGURAÇÕES GLOBAIS & SCROLLBAR
+================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.03);
+}
+
+/* CHROME / EDGE / SAFARI SCROLLBAR */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* ==================================================
+   2. ROOT VARIABLES
+================================================== */
+:root {
+    --white: #ffffff;
+    --white-soft: rgba(255, 255, 255, 0.12);
+    --white-glow: rgba(255, 255, 255, 0.35);
+    --bg: #050505;
+    --card: #0f0f0f;
+    --card-2: #141414;
+    --text: #ffffff;
+    --text-soft: #8b8b8b;
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+/* ==================================================
+   3. BODY & BACKGROUND ANIMATION
+================================================== */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--text);
+    overflow-x: hidden;
+    min-height: 100vh;
+    cursor: none; /* Cursor customizado apenas no desktop */
+    position: relative;
+    background: 
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.04), transparent 30%),
+        #050505;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.06), transparent 20%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.04), transparent 20%),
+        radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.04), transparent 25%);
+    animation: backgroundMove 12s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundMove {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-20px) scale(1.05); }
+}
+
+/* ==================================================
+   4. SISTEMA VISUAL DA MÚSICA (FIXED TOP BAR)
+================================================== */
+.music-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.02);
+    z-index: 999999;
+    overflow: hidden;
+}
+
+.music-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 5px rgba(255, 255, 255, 0.4);
+    transition: width 0.2s linear;
+}
+
+.music-text-status {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #8b8b8b;
+    margin-right: 12px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    animation: textPulse 2s ease-in-out infinite alternate;
+    opacity: 0.7;
+    display: inline-block !important;
+}
+
+@keyframes textPulse {
+    0% { opacity: 0.4; text-shadow: 0 0 0px rgba(255, 255, 255, 0); }
+    100% { opacity: 0.8; text-shadow: 0 0 4px rgba(255, 255, 255, 0.1); }
+}
+
+/* ==================================================
+   5. CURSOR CUSTOMIZADO
+================================================== */
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000000;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.4);
+    transition: width .2s ease, height .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.cursor.active {
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* Força elementos interativos a herdarem a ausência de cursor nativo no desktop */
+a, button, .mira-card, .mira-modal-close {
+    cursor: none;
+}
+
+/* ==================================================
+   6. NAVBAR & ELEMENTS
+================================================== */
+.navbar {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    margin: 20px auto 0;
+    padding: 12px 26px;
+    border-radius: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(15, 15, 15, 0.45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.45), inset 0 0 20px rgba(255, 255, 255, 0.02);
+    transition: .35s ease;
+}
+
+.navbar:hover {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55), 0 0 25px rgba(255, 255, 255, 0.05);
+}
+
+.navbar a {
+    position: relative;
+    text-decoration: none;
+    color: #8b8b8b;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+    border-radius: 40px;
+    transition: color .3s ease, background .3s ease, transform .3s ease;
+}
+
+.navbar a:hover {
+    color: white;
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.navbar a.active {
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.04), 0 0 15px rgba(255, 255, 255, 0.03);
+}
+
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 6px;
+    width: 0%;
+    height: 2px;
+    border-radius: 10px;
+    background: white;
+    transform: translateX(-50%);
+    transition: .35s ease;
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+    width: 60%;
+}
+
+.divisor {
+    width: 1px;
+    height: 24px;
+    margin: 0 16px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.botao-musica {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: #8b8b8b;
+    font-size: 16px;
+    padding: 0;
+    transition: color .3s ease, transform .3s ease;
+}
+
+.botao-musica:hover {
+    color: #ffffff;
+    transform: scale(1.15);
+}
+
+/* ==================================================
+   7. LAYOUT MAIN CONTENT (TITLES & SECTIONS)
+================================================== */
+.setup-container {
+    padding: 0 20px;
+}
+
+.setup-title {
+    margin-top: 140px;
+    text-align: center;
+    font-family: 'Bowlby One', sans-serif;
+    font-size: 60px;
+    letter-spacing: 4px;
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+}
+
+.setup-subtitle {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    color: var(--text-soft);
+    font-size: 15px;
+}
+
+.setup-group {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 25px;
+    border-radius: 22px;
+    background: rgba(15, 15, 15, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.group-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    font-size: 22px;
+    color: white;
+}
+
+.setup-title, .setup-subtitle, .setup-group {
+    animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================================================
+   8. SEÇÃO: RANK E AGENTES
+================================================== */
+.agents-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.agent-card {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: .35s ease;
+}
+
+.agent-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.agent-img-full {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 470px;
+    width: auto;
+    object-fit: contain;
+    padding-left: 18px;
+    filter: brightness(0.4);
+    transition: .35s ease;
+}
+
+.agent-card:nth-child(2) .agent-img-full { left: 48%; }
+.agent-card:nth-child(3) .agent-img-full { left: 56%; }
+
+.agent-card:hover .agent-img-full {
+    transform: translate(-50%, -50%) scale(1.05);
+    filter: brightness(1);
+}
+
+.agent-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(to top, rgba(5, 5, 5, 0.95), transparent);
+}
+
+.agent-name-tag {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.rank-highlight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rank-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.rank-img-main {
+    width: 120px;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.15));
+}
+
+.rank-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #666;
+}
+
+.rank-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+}
+
+/* ==================================================
+   9. SEÇÕES: RESOLUÇÃO & SENSIBILIDADE
+================================================== */
+.hardware-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+}
+
+.hardware-card {
+    padding: 18px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: .3s ease;
+}
+
+.hardware-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.card-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #666;
+}
+
+.card-value {
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+}
+
+/* ==================================================
+   10. SEÇÃO: MIRAS & COPY ACTION
+================================================== */
+.miras-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.mira-card {
+    position: relative;
+    width: 100%;
+    padding: 12px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: .3s ease;
+}
+
+.mira-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.mira-preview {
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mira-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .3s ease;
+}
+
+.mira-card:hover img {
+    transform: scale(1.05);
+}
+
+.mira-name {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #bdbdbd;
+}
+
+.copy-mini {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    font-size: 11px;
+    color: white;
+    animation: fadeMini .25s ease;
+}
+
+@keyframes fadeMini {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================================================
+   11. SISTEMA DE VISUALIZAÇÃO DE MIRAS (MODAL SHOWCASE)
+================================================== */
+.mira-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 5, 5, 0.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.mira-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mira-modal-container {
+    width: 90%;
+    max-width: 750px;
+    background: rgba(15, 15, 15, 0.85);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), inset 0 0 30px rgba(255, 255, 255, 0.01);
+    transform: scale(0.92);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-align: left; 
+}
+
+.mira-modal-overlay.active .mira-modal-container {
+    transform: scale(1);
+}
+
+.mira-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(5, 5, 5, 0.6);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(5px);
+    color: var(--text-soft);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    z-index: 100;
+    transition: color 0.3s, transform 0.3s, border-color 0.3s;
+}
+
+.mira-modal-close:hover {
+    color: var(--text);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.mira-modal-gameplay {
+    width: 100%;
+    height: 420px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.mira-modal-gameplay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 30%, rgba(5, 5, 5, 0.6) 100%);
+    pointer-events: none;
+}
+
+.mira-center-crosshair {
+    position: relative;
+    z-index: 10;
+    max-width: 55px;
+    max-height: 55px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 0 1px rgba(0,0,0,0.5));
+}
+
+.mira-modal-info {
+    padding: 22px 25px;
+    background: rgba(10, 10, 10, 0.4);
+    width: 100%;
+}
+
+.mira-modal-info h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text);
+    letter-spacing: 0.5px;
+}
+
+.mira-modal-info p {
+    font-size: 13px;
+    color: var(--text-soft);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mira-modal-info p i {
+    color: #4cd137;
+}
+
+/* ==================================================
+   12. MEDIA QUERIES (RESPONSIVIDADE)
+================================================== */
+@media (max-width: 992px) {
+    .agents-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .agent-card {
+        height: 400px;
+    }
+    .agent-img-full {
+        max-height: 370px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Força o cursor nativo do celular e esconde o customizado */
+    html, body, a, button, iframe, .card, .card * {
+        cursor: auto !important;
+    }
+    
+    .cursor, .music-text-status {
+        display: none !important;
+    }
+
+    .navbar {
+        top: 10px;
+        width: 95%;
+        padding: 10px 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 6px;
+        border-radius: 40px;
+    }
+
+    .navbar a {
+        font-size: 12px;
+        padding: 8px 10px;
+        white-space: nowrap;
+    }
+
+    .divisor { 
+        display: none; 
+    }
+
+    .botao-musica { 
+        font-size: 14px; 
+        padding: 6px; 
+    }
+
+    .setup-title { 
+        font-size: 34px; 
+        margin-top: 110px; 
+        letter-spacing: 2px; 
+    }
+
+    .setup-subtitle { 
+        font-size: 13px; 
+        padding: 0 12px; 
+    }
+
+    .setup-group { 
+        width: 100%; 
+        padding: 16px; 
+        border-radius: 16px; 
+        margin: 0 auto 20px;
+    }
+
+    .agents-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .miras-grid {
+        justify-content: center;
+    }
+    
+    .mira-modal-gameplay {
+        height: 280px;
+    }
+}

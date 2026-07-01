@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSn | Valorant</title>
+
+    <link rel="icon" type="image/png" href="img/logo perfil.png">
+    <link rel="stylesheet" href="setting-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Carter+One&display=swap" rel="stylesheet">
+
+    <meta name="author" content="KSn">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://khrissodre.github.io/KSn/">
+    <meta property="og:title" content="KSn | Links Oficiais">
+    <meta property="og:description" content="Acesse minhas redes sociais, lives e setup.">
+    <meta property="og:image" content="https://khrissodre.github.io/KSn/img/logo perfil.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KSn | Profile">
+    <meta name="twitter:description" content="Player de Valorant. Links oficiais aqui.">
+    <meta name="twitter:image" content="img/logo perfil.png">
+</head>
+<body>
+
+    <div class="music-progress-container">
+        <div id="music-progress-bar" class="music-progress-fill"></div>
+    </div>
+
+    <div class="particles">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="cursor"></div>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html">Profile</a>
+            <a href="setup.html">Setup</a>
+            <a href="setting.html" class="active">Valorant</a>
+            <a href="video.html">Vídeos</a>
+            <div class="divisor"></div>
+            
+            <span id="music-status" class="music-text-status">NEFFEX - Brave</span>
+            
+            <button onclick="toggleMusic()" class="botao-musica" aria-label="Mutar/Desmutar música">
+                <i id="img-music" class="fa-solid fa-volume-xmark"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="setup-container">
+
+        <h1 class="setup-title">Valorant</h1>
+        <p class="setup-subtitle">Todos os meus settings</p>
+
+        <section class="setup-group">
+            <h2 class="group-title">
+                <i class="fa-solid fa-chart-line"></i> RANK E AGENTS
+            </h2>
+            <div class="agents-grid">
+                <div class="agent-card rank-highlight">
+                    <div class="rank-info">
+                        <img src="img/Diamond_2_Rank.webp" class="rank-img-main" alt="Rank Diamante 2">
+                        <span class="rank-label">RANK</span>
+                        <span class="rank-value">DIAMANTE 2</span>
+                    </div>
+                </div>
+
+                <div class="agent-card">
+                    <img src="img/Raze_Full.webp" class="agent-img-full" alt="Raze">
+                    <div class="agent-overlay">
+                        <span class="agent-name-tag">RAZE</span>
+                    </div>
+                </div>
+
+                <div class="agent-card">
+                    <img src="img/Chamber_Artwork_Full.webp" class="agent-img-full kj-fix" alt="Killjoy">
+                    <div class="agent-overlay">
+                        <span class="agent-name-tag">CHAMBER</span>
+                    </div>
+                </div>
+
+                <div class="agent-card">
+                    <img src="img/Fade_Full.webp" class="agent-img-full" alt="Fade">
+                    <div class="agent-overlay">
+                        <span class="agent-name-tag">FADE</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="setup-group">
+            <h2 class="group-title">
+                <i class="fa-solid fa-desktop"></i> RESOLUÇÃO
+            </h2>
+            <div class="hardware-grid">
+                <div class="hardware-card">
+                    <span class="card-label">RESOLUÇÃO</span>
+                    <span class="card-value">1920x1080</span>
+                </div>
+                <div class="hardware-card">
+                    <span class="card-label">ASPECT RATIO</span>
+                    <span class="card-value">16:9</span>
+                </div>
+                <div class="hardware-card">
+                    <span class="card-label">SCALING</span>
+                    <span class="card-value">Windowed Fullscreen</span>
+                </div>
+                <div class="hardware-card">
+                    <span class="card-label">MONITOR HZ</span>
+                    <span class="card-value">300HZ</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="setup-group">
+            <h2 class="group-title">
+                <i class="fa-solid fa-mouse"></i> SENSIBILIDADE
+            </h2>
+            <div class="hardware-grid">
+                <div class="hardware-card">
+                    <span class="card-label">DPI</span>
+                    <span class="card-value">1600</span>
+                </div>
+                <div class="hardware-card">
+                    <span class="card-label">SENSIBILIDADE</span>
+                    <span class="card-value">0.4</span>
+                </div>
+                <div class="hardware-card">
+                    <span class="card-label">HZ</span>
+                    <span class="card-value">2000</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="setup-group">
+            <h2 class="group-title">
+                <i class="fa-solid fa-crosshairs"></i> MIRAS
+            </h2>
+            <div class="miras-grid">
+                <div class="mira-card" data-copy="0;s;1;P;c;8;u;000000FF;h;0;d;1;b;1;z;3;0t;1;0l;3;0v;3;0o;0;0a;1;0f;0;1b;0;S;b;1;c;8;t;000000FF;s;0.642" data-bg="https://images.contentstack.io/v3/assets/bltb6530b2711edd0ca/blt6454d6aa96e622b7/5fa210214a1f680f4f9f7435/icebox_1.jpg">
+                    <div class="mira-preview"><img src="img/mira.png" alt="Mira Principal" class="mira-thumb"></div>
+                    <div class="mira-name">Principal</div>
+                </div>
+
+                <div class="mira-card" data-copy="0;P;c;8;h;0;f;0;0t;3;0l;1;0v;1;0g;1;0o;1;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0;1f;0" data-bg="https://images.contentstack.io/v3/assets/bltb6530b2711edd0ca/blt56598379fc043da9/6078c89b3f9ff70f2af2f6e9/breeze_bg.jpg">
+                    <div class="mira-preview"><img src="img/image.png" alt="Mira Secundaria" class="mira-thumb"></div>
+                    <div class="mira-name">Secundaria</div>
+                </div>
+
+                <div class="mira-card" data-copy="0;P;o;1;d;1;f;0;0b;0;1b;0" data-bg="https://images.contentstack.io/v3/assets/bltb6530b2711edd0ca/blt0dfaa6ffdd0dd2d4/6171b12b5fb0ba2eb4e5e45c/fracture_keyart.jpg">
+                    <div class="mira-preview"><img src="img/mirapotinho.png" alt="Mira Pontinho" class="mira-thumb"></div>
+                    <div class="mira-name">Pontinho</div>
+                </div>
+
+                <div class="mira-card" data-copy="0;s;1;P;c;8;u;000000FF;h;0;d;1;a;0.0;0l;4;0v;4;0o;0;0a;1;0f;0;1b;0;S;b;1;c;8;t;000000FF;s;0.64" data-bg="https://images.contentstack.io/v3/assets/bltb6530b2711edd0ca/blt18b456860af867d7/642c8d20a672721473be9f65/Valorant_Bind_2023_v1.jpg">
+                    <div class="mira-preview"><img src="img/cruzmira.png" alt="Mira Cruz" class="mira-thumb"></div>
+                    <div class="mira-name">Cruz</div>
+                </div>
+
+                <div class="mira-card" data-copy="0;c;1;s;1;P;t;4;o;1;d;1;z;5;a;0.556;0t;10;0l;20;0v;0;0g;1;0o;13;0a;1;0f;0;1t;1;1l;1;1v;0;1g;1;1o;14;1a;1;1s;0.064;1e;0.375;S;c;0;s;0.628;o;1" data-bg="https://images.contentstack.io/v3/assets/bltb6530b2711edd0ca/blt8ef691b058fe8b14/62a1141df9012f462bb0df3a/Valorant_Pearl_Map_Loading_Screen.jpg">
+                    <div class="mira-preview"><img src="img/resenhamira.png" alt="Mira Resenha" class="mira-thumb"></div>
+                    <div class="mira-name">Resenha</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <audio id="musica" loop preload="auto">
+        <source src="audio/NEFFEX - Brave [Copyright Free] No.217.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="mira-modal" class="mira-modal-overlay">
+        <div class="mira-modal-container">
+            <button class="mira-modal-close" onclick="fecharModalMira()"><i class="fa-solid fa-xmark"></i></button>
+            <div id="mira-modal-bg" class="mira-modal-gameplay">
+                <img id="mira-modal-target" src="" alt="Mira Ampliada" class="mira-center-crosshair">
+            </div>
+            <div class="mira-modal-info">
+                <h3 id="mira-modal-title">Nome da Mira</h3>
+                <p><i class="fa-regular fa-copy"></i> Código copiado com sucesso! Pronto para importar no jogo.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // ==================================================
+    // 1. CONTROLE DE ÁUDIO COM PROGRESSO VISUAL
+    // ==================================================
+    const musica = document.getElementById("musica");
+    const iconeMusica = document.getElementById("img-music");
+    const musicProgressBar = document.getElementById("music-progress-bar");
+
+    if (musica) {
+        musica.volume = 0.15;
+
+        const musicaMutada = localStorage.getItem("musicMuted");
+        if (musicaMutada === "true") {
+            musica.muted = true;
+            if (iconeMusica) iconeMusica.className = "fa-solid fa-volume-xmark";
+        } else {
+            musica.muted = false;
+            if (iconeMusica) iconeMusica.className = "fa-solid fa-volume-high";
+        }
+
+        function sincronizarETocar() {
+            const tempoSalvo = localStorage.getItem("musicTime");
+            if (tempoSalvo && musica.currentTime === 0) {
+                musica.currentTime = parseFloat(tempoSalvo);
+            }
+            musica.play().catch(() => { console.log("Autoplay aguardando interação."); });
+        }
+
+        musica.addEventListener("loadedmetadata", sincronizarETocar);
+        sincronizarETocar();
+        document.addEventListener("click", sincronizarETocar, { once: true });
+
+        setInterval(() => {
+            if (!musica.paused && musica.currentTime > 0) {
+                localStorage.setItem("musicTime", musica.currentTime);
+                
+                if (musica.duration && musicProgressBar) {
+                    const porcentagem = (musica.currentTime / musica.duration) * 100;
+                    musicProgressBar.style.width = `${porcentagem}%`;
+                }
+            }
+        }, 250);
+    }
+
+    window.toggleMusic = function() {
+        if (!musica) return;
+        musica.muted = !musica.muted;
+        if (iconeMusica) {
+            iconeMusica.className = musica.muted ? "fa-solid fa-volume-xmark" : "fa-solid fa-volume-high";
+        }
+        localStorage.setItem("musicMuted", musica.muted);
+    };
+
+    // ==================================================
+    // 2. CONFIGURAÇÃO DO CURSOR CUSTOMIZADO E EVENTOS
+    // ==================================================
+    window.addEventListener("DOMContentLoaded", () => {
+        const cursor = document.querySelector(".cursor");
+        const modalOverlay = document.getElementById('mira-modal');
+        
+        if (cursor) {
+            document.addEventListener("mousemove", (e) => {
+                if (e.clientX >= window.innerWidth - 16 || e.clientY >= window.innerHeight - 5 || e.clientX <= 5 || e.clientY <= 5) {
+                    cursor.style.display = "none";
+                } else {
+                    cursor.style.display = "block";
+                }
+                cursor.style.left = e.clientX + "px";
+                cursor.style.top = e.clientY + "px";
+            });
+
+            document.addEventListener("mouseleave", () => {
+                cursor.style.display = "none";
+            });
+
+            const hoverItems = document.querySelectorAll("a, button, .mira-card, .mira-modal-close");
+            hoverItems.forEach(item => {
+                item.addEventListener("mouseenter", () => cursor.classList.add("active"));
+                item.addEventListener("mouseleave", () => cursor.classList.remove("active"));
+            });
+
+            const videoWrappers = document.querySelectorAll(".video-wrapper");
+            videoWrappers.forEach(wrapper => {
+                wrapper.addEventListener("mouseenter", () => cursor.style.display = "none");
+                wrapper.addEventListener("mouseleave", () => cursor.style.display = "block");
+            });
+        }
+
+        // Evento de fechamento ao clicar fora do container do modal
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    fecharModalMira();
+                }
+            });
+        }
+    });
+
+    // ==================================================
+    // 3. COPIAR MIRAS + SELETOR INTEGRADO DO MODAL SHOWCASE
+    // ==================================================
+    const miraCards = document.querySelectorAll(".mira-card");
+    miraCards.forEach(card => {
+        card.addEventListener("click", () => {
+            const texto = card.getAttribute("data-copy");
+
+            navigator.clipboard.writeText(texto).then(() => {
+                const antiga = card.querySelector(".copy-mini");
+                if (antiga) antiga.remove();
+
+                const notif = document.createElement("div");
+                notif.className = "copy-mini";
+                notif.innerHTML = `<i class="fa-solid fa-check"></i> Copiado`;
+                card.appendChild(notif);
+
+                setTimeout(() => {
+                    notif.style.opacity = "0";
+                    notif.style.transform = "translateY(-5px)";
+                    setTimeout(() => notif.remove(), 250);
+                }, 1200);
+
+                // --- Disparo do Modal Showcase ---
+                const tituloMira = card.querySelector('.mira-name').innerText;
+                const imagemMiraSrc = card.querySelector('.mira-thumb').src;
+                const mapaFundoUrl = card.getAttribute('data-bg');
+
+                document.getElementById('mira-modal-title').innerText = tituloMira;
+                document.getElementById('mira-modal-target').src = imagemMiraSrc;
+                document.getElementById('mira-modal-bg').style.backgroundImage = `url('${mapaFundoUrl}')`;
+
+                const modal = document.getElementById('mira-modal');
+                if (modal) modal.classList.add('active');
+            });
+        });
+    });
+
+    function fecharModalMira() {
+        const modal = document.getElementById('mira-modal');
+        if (modal) modal.classList.remove('active');
+    }
+    </script>
+</body>
+</html>

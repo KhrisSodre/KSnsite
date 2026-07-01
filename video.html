@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSn | Vídeos</title>
+    <meta name="author" content="KSn">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://khrissodre.github.io/KSn/">
+    <meta property="og:title" content="KSn | Links Oficiais">
+    <meta property="og:description" content="Acesse minhas redes sociais, lives e setup.">
+    <meta property="og:image" content="https://khrissodre.github.io/KSn/img/logo%20perfil.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KSn | Profile">
+    <meta name="twitter:description" content="Player de Valorant. Links oficiais aqui.">
+    <meta name="twitter:image" content="img/logo perfil.png">
+
+    <link rel="icon" type="image/png" href="img/logo perfil.png">
+    <link rel="stylesheet" href="video-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Carter+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="music-progress-container">
+        <div id="music-progress-bar" class="music-progress-fill"></div>
+    </div>
+
+    <div class="particles">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="cursor"></div>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html">Profile</a>
+            <a href="setup.html">Setup</a>
+            <a href="setting.html">Valorant</a>
+            <a href="video.html" class="active">Vídeos</a>
+            <div class="divisor"></div>
+            
+            <span id="music-status" class="music-text-status">NEFFEX - Brave</span>
+            
+            <button onclick="toggleMusic()" class="botao-musica">
+                <i id="img-music" class="fa-solid fa-volume-xmark"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="setup-container">
+        <h1 class="setup-title">Vídeos</h1>
+        <p class="setup-subtitle">Meus clips</p>
+
+        <section class="setup-group">
+            <h2 class="group-title">
+                <i class="fa-solid fa-clapperboard"></i>
+                Vídeos no YouTube
+            </h2>
+
+            <div class="carousel-wrapper">
+                <button class="arrow-btn prev" onclick="scrollClick(this, -1)">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                
+                <div class="cards-grid carousel-grid" id="carousel-yt">
+                    <div class="setup-card">
+                        <div class="video-wrapper">
+                            <div class="video-overlay"></div>
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/0t7FqWpvGq4" title="Highlight 1" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-info highlight-info">
+                            <span class="badge">#1</span>
+                            <h3>Highlight (KSn x Valorant)</h3>
+                            <p>Talvez você precise de mi — Veigh</p>
+                        </div>
+                    </div>
+
+                    <div class="setup-card">
+                        <div class="video-wrapper">
+                            <div class="video-overlay"></div>
+                            <iframe loading="lazy" src="https://www.youtube.com/embed/kAn_0WxZJ_g" title="Highlight 2" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-info highlight-info">
+                            <span class="badge">#2</span>
+                            <h3>Highlight (KSn x Valorant)</h3>
+                            <p>Fazer Falta 2 — MC Livinho</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="arrow-btn next" onclick="scrollClick(this, 1)">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="carousel-controls">
+                <div class="carousel-timeline"><div class="timeline-progress"></div></div>
+            </div>
+        </section>
+
+        <section class="setup-group">
+            <h2 class="group-title">
+                <i class="fa-solid fa-clapperboard"></i>
+                Clips na Twitch
+            </h2>
+            
+            <div class="carousel-wrapper">
+                <button class="arrow-btn prev" onclick="scrollClick(this, -1)">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <div class="cards-grid twitch-grid carousel-grid" id="carousel-twitch">
+                    <div class="setup-card">
+                        <div class="video-wrapper">
+                            <div class="video-overlay"></div>
+                            <iframe loading="lazy" src="https://clips.twitch.tv/embed?clip=JazzyProductiveCrocodileCmonBruh-PBWJWfKNf6HGP_qd&parent=khrissodre.github.io" title="Clip 1" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-info highlight-info"><span class="badge">#1</span><h3>Clip (KSn x Valorant)</h3><p>twitch</p></div>
+                    </div>
+                    <div class="setup-card">
+                        <div class="video-wrapper">
+                            <div class="video-overlay"></div>
+                            <iframe loading="lazy" src="https://clips.twitch.tv/embed?clip=PoliteThirstyPidgeonCharlietheUnicorn-VTdxQmt2IL2Hdx2e&parent=khrissodre.github.io" title="Clip 2" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-info highlight-info"><span class="badge">#2</span><h3>Clip (KSn x Valorant)</h3><p>twitch</p></div>
+                    </div>
+                    <div class="setup-card">
+                        <div class="video-wrapper">
+                            <div class="video-overlay"></div>
+                            <iframe loading="lazy" src="https://clips.twitch.tv/embed?clip=BumblingArtsyRamenHeyGuys-Ct0VxxYtBwZ7SSp4&parent=khrissodre.github.io" title="Clip 3" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-info highlight-info"><span class="badge">#3</span><h3>Clip (KSn x Valorant)</h3><p>twitch</p></div>
+                    </div>
+                    <div class="setup-card">
+                        <div class="video-wrapper">
+                            <div class="video-overlay"></div>
+                            <iframe loading="lazy" src="https://clips.twitch.tv/embed?clip=AmazonianFairDunlinDendiFace-pPXAkMsZjpZHppsN&parent=khrissodre.github.io" title="Clip 4" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-info highlight-info"><span class="badge">#4</span><h3>Clip (KSn x Valorant)</h3><p>twitch</p></div>
+                    </div>
+                    <div class="setup-card">
+                        <div class="video-wrapper">
+                            <div class="video-overlay"></div>
+                            <iframe loading="lazy" src="https://clips.twitch.tv/embed?clip=CorrectHungryCakeRaccAttack-sosLS0aSKkftmrH7&parent=khrissodre.github.io" title="Clip 5" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-info highlight-info"><span class="badge">#5</span><h3>Clip (KSn x Valorant)</h3><p>twitch</p></div>
+                    </div>
+                    <div class="setup-card">
+                        <div class="video-wrapper">
+                            <div class="video-overlay"></div>
+                            <iframe loading="lazy" src="https://clips.twitch.tv/embed?clip=MildCaringKathyDoggo-hyoDxu3n3kivdReT&parent=khrissodre.github.io" title="Clip 6" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-info highlight-info"><span class="badge">#6</span><h3>Clip (KSn x Valorant)</h3><p>twitch</p></div>
+                    </div>
+                    <div class="setup-card">
+                        <div class="video-wrapper">
+                            <div class="video-overlay"></div>
+                            <iframe loading="lazy" src="https://clips.twitch.tv/embed?clip=AuspiciousSparklingBillBloodTrail-ca9gPk64_yTCbNz4&parent=khrissodre.github.io" title="Clip 7" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-info highlight-info"><span class="badge">#7</span><h3>Clip (KSn x Valorant)</h3><p>twitch</p></div>
+                    </div>
+                    <div class="setup-card">
+                        <div class="video-wrapper">
+                            <div class="video-overlay"></div>
+                            <iframe loading="lazy" src="https://clips.twitch.tv/embed?clip=&parent=khrissodre.github.io" title="Clip 7" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-info highlight-info"><span class="badge">#8</span><h3>Clip (KSn x Valorant)</h3><p>twitch</p></div>
+                    </div>
+                    <div class="setup-card">
+                        <div class="video-wrapper">
+                            <div class="video-overlay"></div>
+                            <iframe loading="lazy" src="https://clips.twitch.tv/embed?clip=&parent=khrissodre.github.io" title="Clip 7" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-info highlight-info"><span class="badge">#9</span><h3>Clip (KSn x Valorant)</h3><p>twitch</p></div>
+                    </div>
+                    <div class="setup-card">
+                        <div class="video-wrapper">
+                            <div class="video-overlay"></div>
+                            <iframe loading="lazy" src="https://clips.twitch.tv/embed?clip=&parent=khrissodre.github.io" title="Clip 7" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-info highlight-info"><span class="badge">#10</span><h3>Clip (KSn x Valorant)</h3><p>twitch</p></div>
+                    </div>
+                    <div class="setup-card">
+                        <div class="video-wrapper">
+                            <div class="video-overlay"></div>
+                            <iframe loading="lazy" src="https://clips.twitch.tv/embed?clip=&parent=khrissodre.github.io" title="Clip 7" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-info highlight-info"><span class="badge">#11</span><h3>Clip (KSn x Valorant)</h3><p>twitch</p></div>
+                    </div>
+
+                </div>
+
+                <button class="arrow-btn next" onclick="scrollClick(this, 1)">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="carousel-controls">
+                <div class="carousel-timeline"><div class="timeline-progress"></div></div>
+            </div>
+        </section>
+    </main>
+
+    <audio id="musica" loop preload="auto">
+        <source src="audio/NEFFEX - Brave [Copyright Free] No.217.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+    // ===================================================
+    // 1. CONTROLE DE ÁUDIO COM SINCRO DE TEMPO & PROGRESSO
+    // ===================================================
+    const musica = document.getElementById("musica");
+    const iconeMusica = document.getElementById("img-music");
+    const musicProgressBar = document.getElementById("music-progress-bar");
+
+    if (musica) {
+        musica.volume = 0.15;
+
+        const musicaMutada = localStorage.getItem("musicMuted");
+        if (musicaMutada === "true") {
+            musica.muted = true;
+            if (iconeMusica) iconeMusica.className = "fa-solid fa-volume-xmark";
+        } else {
+            musica.muted = false;
+            if (iconeMusica) iconeMusica.className = "fa-solid fa-volume-high";
+        }
+
+        function sincronizarETocar() {
+    const tempoSalvo = localStorage.getItem("musicTime");
+    if (tempoSalvo && musica.currentTime === 0) {
+        musica.currentTime = parseFloat(tempoSalvo);
+    }
+    
+    musica.volume = 0; // Começa mudo para subir suavemente
+    
+    musica.play().then(() => {
+        let fadeInterval = setInterval(() => {
+            if (musica.volume < 0.15) {
+                musica.volume = Math.min(0.15, musica.volume + 0.01);
+            } else {
+                clearInterval(fadeInterval);
+            }
+        }, 50);
+    }).catch(() => { 
+        console.log("Autoplay aguardando clique inicial."); 
+    });
+}
+
+        musica.addEventListener("loadedmetadata", sincronizarETocar);
+        sincronizarETocar();
+        document.addEventListener("click", sincronizarETocar, { once: true });
+
+        setInterval(() => {
+            if (!musica.paused && musica.currentTime > 0) {
+                localStorage.setItem("musicTime", musica.currentTime);
+                
+                if (musica.duration && musicProgressBar) {
+                    const porcentagem = (musica.currentTime / musica.duration) * 100;
+                    musicProgressBar.style.width = `${porcentagem}%`;
+                }
+            }
+        }, 250);
+    }
+
+    window.toggleMusic = function() {
+        if (!musica) return;
+        musica.muted = !musica.muted;
+        if (iconeMusica) {
+            iconeMusica.className = musica.muted ? "fa-solid fa-volume-xmark" : "fa-solid fa-volume-high";
+        }
+        localStorage.setItem("musicMuted", musica.muted);
+    };
+
+    // ===================================================
+    // 2. SISTEMA DE CURSOR PREMIUM CUSTOMIZADO
+    // ===================================================
+    window.addEventListener("DOMContentLoaded", () => {
+        const cursor = document.querySelector(".cursor");
+        if (!cursor) return;
+
+        document.addEventListener("mousemove", (e) => {
+            if (e.clientX >= window.innerWidth - 16 || e.clientY >= window.innerHeight - 5 || e.clientX <= 5 || e.clientY <= 5) {
+                cursor.style.display = "none";
+            } else {
+                cursor.style.display = "block";
+            }
+            cursor.style.left = e.clientX + "px";
+            cursor.style.top = e.clientY + "px";
+        });
+
+        document.addEventListener('keydown', (e) => {
+            const activeCarousel = Array.from(document.querySelectorAll('.carousel-grid'))
+                .find(c => c.getBoundingClientRect().top > 0 && c.getBoundingClientRect().top < window.innerHeight);
+
+            if (!activeCarousel) return;
+
+            const cardWidth = activeCarousel.querySelector('.setup-card').offsetWidth + 28;
+            if (e.key === 'ArrowRight') {
+                activeCarousel.scrollLeft += cardWidth;
+            } else if (e.key === 'ArrowLeft') {
+                activeCarousel.scrollLeft -= cardWidth;
+            }
+        });
+
+        document.addEventListener("mouseleave", () => {
+            cursor.style.display = "none";
+        });
+
+        const hoverItems = document.querySelectorAll("a, button");
+        hoverItems.forEach(item => {
+            item.addEventListener("mouseenter", () => { cursor.classList.add("active"); });
+            item.addEventListener("mouseleave", () => { cursor.classList.remove("active"); });
+        });
+
+        const videoWrappers = document.querySelectorAll(".video-wrapper");
+        videoWrappers.forEach(wrapper => {
+            wrapper.addEventListener("mouseenter", () => { 
+                cursor.style.opacity = "0"; 
+            });
+             wrapper.addEventListener("mouseleave", () => { 
+                cursor.style.opacity = "1"; 
+            });
+        });
+    });
+
+    // ===================================================
+    // 3. ESTRUTURA E MECÂNICA DOS CARROSSEIS (SETAS + DRAG)
+    // ===================================================
+    document.addEventListener("DOMContentLoaded", () => {
+        const carousels = document.querySelectorAll('.carousel-grid');
+
+        carousels.forEach(carousel => {
+            const section = carousel.closest('.setup-group');
+            const progressBar = section.querySelector('.timeline-progress');
+            const controls = section.querySelector('.carousel-controls');
+
+            function updateProgress() {
+                const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+                if (maxScroll <= 0) {
+                    if (controls) controls.classList.add('hidden');
+                    return;
+                } else {
+                    if (controls) controls.classList.remove('hidden');
+                }
+                const scrollPercentage = (carousel.scrollLeft / maxScroll) * 100;
+                progressBar.style.width = `${Math.max(15, scrollPercentage)}%`;
+            }
+
+            carousel.addEventListener('scroll', updateProgress, { passive: true });
+            window.addEventListener('resize', updateProgress);
+            setTimeout(updateProgress, 300);
+
+            let isDown = false;
+            let startX, scrollLeft;
+
+            carousel.addEventListener('mousedown', (e) => {
+                isDown = true;
+                carousel.style.scrollBehavior = 'auto';
+                startX = e.pageX - carousel.offsetLeft;
+                scrollLeft = carousel.scrollLeft;
+            });
+
+            carousel.addEventListener('mouseleave', () => { isDown = false; });
+            carousel.addEventListener('mouseup', () => {
+                isDown = false;
+                carousel.style.scrollBehavior = 'smooth';
+            });
+
+            carousel.addEventListener('mousemove', (e) => {
+                if(!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - carousel.offsetLeft;
+                const walk = (x - startX) * 1.5;
+                carousel.scrollLeft = scrollLeft - walk;
+            });
+        });
+    });
+
+    function scrollClick(button, direction) {
+        const grid = button.parentElement.querySelector('.carousel-grid');
+        if (!grid) return;
+        
+        const cardWidth = grid.querySelector('.setup-card').offsetWidth;
+        const gap = 28;
+        
+        grid.style.scrollBehavior = 'smooth';
+        grid.scrollLeft += (cardWidth + gap) * direction;
+    }
+    </script>
+</body>
+</html>

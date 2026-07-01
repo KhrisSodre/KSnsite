@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSn | Profile</title>
+
+    <link rel="icon" type="image/png" href="img/logo perfil.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Carter+One&display=swap" rel="stylesheet">
+
+    <meta name="author" content="KSn">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://khrissodre.github.io/KSn/">
+    <meta property="og:title" content="KSn | Links Oficiais">
+    <meta property="og:description" content="Acesse minhas redes sociais, lives e setup.">
+    <meta property="og:image" content="https://khrissodre.github.io/KSn/img/logo%20perfil.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KSn | Profile">
+    <meta name="twitter:description" content="Player de Valorant. Links oficiais aqui.">
+    <meta name="twitter:image" content="img/logo perfil.png">
+</head>
+<body>
+
+    <div class="music-progress-container">
+        <div id="music-progress-bar" class="music-progress-fill"></div>
+    </div>
+
+    <div class="particles">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="cursor"></div>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="active">Profile</a>
+            <a href="setup.html">Setup</a>
+            <a href="setting.html">Valorant</a>
+            <a href="video.html">Vídeos</a>
+            <div class="divisor"></div>
+            
+            <span id="music-status" class="music-text-status">NEFFEX - Brave</span>
+            
+            <button onclick="toggleMusic()" class="botao-musica">
+                <i id="img-music" class="fa-solid fa-volume-xmark"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="profile-header">
+            <div class="foto-container">
+                <img class="foto-perfil" src="img/logo perfil.png" alt="Foto Perfil">
+            </div>
+
+            <h1>KSn</h1>
+
+            <p class="location">
+                <img src="img/pino-de-localizacao.png" alt="Localização">
+                ES
+            </p>
+
+            <div class="social-links">
+                <a href="https://www.twitch.tv/ksnx_" class="social-btn twitch" target="_blank" rel="noopener">
+                    <i class="fab fa-twitch"></i>
+                </a>
+                <a href="https://www.instagram.com/khrissodre/" class="social-btn instagram" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://x.com/KsSodre" class="social-btn twitter" target="_blank" rel="noopener">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://discord.gg/SvCsMb9gwh" class="social-btn discord" target="_blank" rel="noopener">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <div class="copy-wrapper">
+                    <a href="javascript:void(0)" onclick="copiarRiotID(this, 'KSn#027')">
+                        <img src="img/logo riot.png" alt="Riot ID" class="riot-icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="bio">
+            Não sei o que dizer aqui, depois eu faço...
+        </h2>
+    </main>
+
+    <audio id="musica" loop preload="auto">
+        <source src="audio/NEFFEX - Brave [Copyright Free] No.217.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // ==========================================
+        // 1. CONTROLE DE ÁUDIO COM PROGRESSO VISUAL
+        // ==========================================
+        const musica = document.getElementById("musica");
+        const iconeMusica = document.getElementById("img-music");
+        const musicProgressBar = document.getElementById("music-progress-bar");
+
+        if (musica) {
+            musica.volume = 0.15;
+
+            // Recupera e aplica o estado de mute salvo
+            const musicaMutada = localStorage.getItem("musicMuted");
+            if (musicaMutada === "true") {
+                musica.muted = true;
+                if (iconeMusica) iconeMusica.className = "fa-solid fa-volume-xmark";
+            } else {
+                musica.muted = false;
+                if (iconeMusica) iconeMusica.className = "fa-solid fa-volume-high";
+            }
+
+            // Função segura para aplicar minutagem e dar Play
+            function sincronizarETocar() {
+                const tempoSalvo = localStorage.getItem("musicTime");
+                if (tempoSalvo && musica.currentTime === 0) {
+                    musica.currentTime = parseFloat(tempoSalvo);
+                }
+                musica.play().catch(() => { console.log("Autoplay aguardando interação."); });
+            }
+
+            // Eventos de inicialização do áudio
+            musica.addEventListener("loadedmetadata", sincronizarETocar);
+            sincronizarETocar();
+            document.addEventListener("click", sincronizarETocar, { once: true });
+
+            // Loop de sincronização (LocalStorage + Barra de Progresso)
+            setInterval(() => {
+                if (!musica.paused && musica.currentTime > 0) {
+                    localStorage.setItem("musicTime", musica.currentTime);
+                    
+                    if (musica.duration && musicProgressBar) {
+                        const porcentagem = (musica.currentTime / musica.duration) * 100;
+                        musicProgressBar.style.width = `${porcentagem}%`;
+                    }
+                }
+            }, 250);
+        }
+
+        // Função de clique no botão de Mute modificada (Texto fica fixo)
+        window.toggleMusic = function() {
+            if (!musica) return;
+            musica.muted = !musica.muted;
+            
+            if (musica.muted) {
+                if (iconeMusica) iconeMusica.className = "fa-solid fa-volume-xmark";
+            } else {
+                if (iconeMusica) iconeMusica.className = "fa-solid fa-volume-high";
+            }
+            localStorage.setItem("musicMuted", musica.muted);
+        };
+
+        // ==========================================
+        // 2. CURSOR CUSTOMIZADO PROTEGIDO
+        // ==========================================
+        const cursor = document.querySelector(".cursor");
+        if (cursor) {
+            document.addEventListener("mousemove", (e) => {
+                if (e.clientX >= window.innerWidth - 16 || e.clientY >= window.innerHeight - 5 || e.clientX <= 5 || e.clientY <= 5) {
+                    cursor.style.display = "none";
+                } else {
+                    cursor.style.display = "block";
+                }
+                cursor.style.left = e.clientX + "px";
+                cursor.style.top = e.clientY + "px";
+            });
+
+            document.addEventListener("mouseleave", () => {
+                cursor.style.display = "none";
+            });
+
+            // Seleciona todos os elementos interativos ativos para o hover do cursor
+            const hoverItems = document.querySelectorAll("a, button, .social-btn, .copy-wrapper a, .riot-icon");
+            hoverItems.forEach(item => {
+                item.addEventListener("mouseenter", () => cursor.classList.add("active"));
+                item.addEventListener("mouseleave", () => cursor.classList.remove("active"));
+            });
+        }
+    });
+
+    // ==========================================
+    // 3. FUNÇÃO DE COPIAR RIOT ID
+    // ==========================================
+    function copiarRiotID(elemento, textoParaCopiar) {
+        navigator.clipboard.writeText(textoParaCopiar).then(() => {
+            const parent = elemento.closest(".copy-wrapper") || elemento.parentElement;
+            const existingNotif = parent.querySelector(".copy-notif");
+
+            if (existingNotif) existingNotif.remove();
+
+            const notif = document.createElement("div");
+            notif.className = "copy-notif";
+            notif.innerHTML = `
+                <div class="copy-content">
+                    <div class="copy-text">
+                        <strong>Copiado!</strong>
+                        <span>${textoParaCopiar}</span>
+                    </div>
+                    <i class="fa-regular fa-clipboard"></i>
+                </div>
+            `;
+
+            parent.appendChild(notif);
+
+            setTimeout(() => {
+                notif.style.animation = "fadeOut 0.3s ease forwards";
+                setTimeout(() => { notif.remove(); }, 300);
+            }, 2500);
+        });
+    }
+    </script>
+</body>
+</html>

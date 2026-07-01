@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSn | Setup</title>
+    <meta name="author" content="KSn">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://khrissodre.github.io/KSn/">
+    <meta property="og:title" content="KSn | Links Oficiais">
+    <meta property="og:description" content="Acesse minhas redes sociais, lives e setup.">
+    <meta property="og:image" content="https://khrissodre.github.io/KSn/img/logo%20perfil.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KSn | Profile">
+    <meta name="twitter:description" content="Player de Valorant. Links oficiais aqui.">
+    <meta name="twitter:image" content="img/logo perfil.png">
+
+    <link class="icon" type="image/png" href="img/logo perfil.png">
+    
+    <link rel="stylesheet" href="setup-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Carter+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="music-progress-container">
+        <div id="music-progress-bar" class="music-progress-fill"></div>
+    </div>
+
+    <div class="particles">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="cursor"></div>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html">Profile</a>
+            <a href="setup.html" class="active">Setup</a>
+            <a href="setting.html">Valorant</a>
+            <a href="video.html">Vídeos</a>
+            <div class="divisor"></div>
+            
+            <span id="music-status" class="music-text-status">NEFFEX - Brave</span>
+            
+            <button onclick="toggleMusic()" class="botao-musica">
+                <i id="img-music" class="fa-solid fa-volume-xmark"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main class="setup-container">
+        <h1 class="setup-title">SETUP</h1>
+        <p class="setup-subtitle">Conheça meu setup e tudo que utilizo nele</p>
+
+        <section class="setup-group my-setup" id="main-setup">
+            <h2 class="group-title"><i class="fa-solid fa-desktop"></i> Setup</h2>
+            <div class="cards-grid">
+                <div class="setup-card">
+                    <img src="img/Meusetup.jpg" alt="Setup">
+                    <div class="card-info">
+                        <span class="badge">Completo</span>
+                        <h3>Foto do Meu Setup</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="setup-group">
+            <h2 class="group-title"><i class="fa-solid fa-desktop"></i> MONITORES</h2>
+            <div class="cards-grid">
+                <div class="setup-card" onclick="copiarTexto(this)">
+                    <img src="img/TCL QD-Mini LED Monitor Gamer 25G64.jpeg" alt="Monitor Principal">
+                    <div class="card-info">
+                        <span class="badge">300Hz</span>
+                        <h3>Monitor Principal</h3>
+                        <p>TCL QD-Mini LED Monitor Gamer 25G64</p>
+                    </div>
+                </div>
+                <div class="setup-card" onclick="copiarTexto(this)">
+                    <img src="img/Monitor AOC Hero 24G2 BK.jpg" alt="Monitor Secundário">
+                    <div class="card-info">
+                        <span class="badge">144Hz</span>
+                        <h3>Monitor Secundário</h3>
+                        <p>Monitor AOC Hero 24G2/BK</p>
+                    </div>
+                </div>
+                <div class="setup-card" onclick="copiarTexto(this)">
+                    <img src="img/TV AOC 32 poelgadas LE32M1475.jpg" alt="Monitor Auxiliar">
+                    <div class="card-info">
+                        <span class="badge">60Hz</span>
+                        <h3>Monitor Auxiliar</h3>
+                        <p>TV AOC 32 poelgadas LE32M1475</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="setup-group">
+            <h2 class="group-title"><i class="fa-solid fa-keyboard"></i> PERIFÉRICOS</h2>
+            <div class="cards-grid">
+                <div class="setup-card" onclick="copiarTexto(this)">
+                    <img src="img/IYX Mu68 Pro Magnético.webp" alt="Teclado">
+                    <div class="card-info">
+                        <h3>Teclado</h3>
+                        <p>IYX Mu68 Pro Magnético</p>
+                    </div>
+                </div>
+                <div class="setup-card" onclick="copiarTexto(this)">
+                    <img src="img/Logitech G Pro X2 Superstrike.jpg" alt="Mouse">
+                    <div class="card-info">
+                        <h3>Mouse</h3>
+                        <p>Logitech G Pro X2 Superstrike</p>
+                    </div>
+                </div>
+                <div class="setup-card" onclick="copiarTexto(this)">
+                    <img src="img/GLSSWRKS Kazemi Limited Edition.webp" alt="Mousepad">
+                    <div class="card-info">
+                        <h3>Mousepad</h3>
+                        <p>GLSSWRKS Kazemi Limited Edition</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="setup-group">
+            <h2 class="group-title"><i class="fa-solid fa-headphones"></i> ÁUDIO</h2>
+            <div class="cards-grid">
+                <div class="setup-card" onclick="copiarTexto(this)">
+                    <img src="img/TRUTHEAR x Crinacle Zero BLUE2.webp" alt="Fones">
+                    <div class="card-info">
+                        <h3>Fone</h3>
+                        <p>TRUTHEAR x Crinacle Zero: BLUE2</p>
+                    </div>
+                </div>
+                <div class="setup-card" onclick="copiarTexto(this)">
+                    <img src="img/Baseus AeQur GH02.webp" alt="Headset">
+                    <div class="card-info">
+                        <h3>Headset</h3>
+                        <p>Baseus AeQur GH02</p>
+                    </div>
+                </div>
+                <div class="setup-card" onclick="copiarTexto(this)">
+                    <img src="img/Fifine AM8.webp" alt="Microfone">
+                    <div class="card-info">
+                        <h3>Microfone</h3>
+                        <p>Fifine AM8</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="setup-group">
+            <h2 class="group-title"><i class="fa-solid fa-microchip"></i> HARDWARE</h2>
+            <div class="hardware-grid">
+                <div class="hardware-card" onclick="copiarTexto(this)">
+                    <h3>Placa Mãe</h3>
+                    <p>Asrock Z790 PG Lightning/D4</p>
+                </div>
+                <div class="hardware-card" onclick="copiarTexto(this)">
+                    <h3>Processador</h3>
+                    <p>Intel Core i7 12700KF</p>
+                </div>
+                <div class="hardware-card" onclick="copiarTexto(this)">
+                    <h3>Placa de Vídeo</h3>
+                    <p>Asus NVIDIA GeForce RTX 4060 ProArt</p>
+                </div>
+                <div class="hardware-card" onclick="copiarTexto(this)">
+                    <h3>Memória RAM</h3>
+                    <p>Kingston Fury Beast 32GB (2x16) 3200MHz DDR4</p>
+                </div>
+                <div class="hardware-card" onclick="copiarTexto(this)">
+                    <h3>Armazenamento</h3>
+                    <p>SSD XPG S70 Blade 1TB</p>
+                </div>
+                <div class="hardware-card" onclick="copiarTexto(this)">
+                    <h3>Fonte</h3>
+                    <p>MSI MAG A650BN 650W 80 Plus</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="setup-footer">
+            <p>Setup atualizado em Julho/2026</p>
+        </footer>
+    </main>
+
+    <audio id="musica" loop preload="auto">
+        <source src="audio/NEFFEX - Brave [Copyright Free] No.217.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // ==========================================
+        // 1. CONTROLE DE ÁUDIO COM PROGRESSO VISUAL
+        // ==========================================
+        const musica = document.getElementById("musica");
+        const iconeMusica = document.getElementById("img-music");
+        const musicProgressBar = document.getElementById("music-progress-bar");
+
+        if (musica) {
+            musica.volume = 0.15;
+
+            const musicaMutada = localStorage.getItem("musicMuted");
+            if (musicaMutada === "true") {
+                musica.muted = true;
+                if (iconeMusica) iconeMusica.className = "fa-solid fa-volume-xmark";
+            } else {
+                musica.muted = false;
+                if (iconeMusica) iconeMusica.className = "fa-solid fa-volume-high";
+            }
+
+            function sincronizarETocar() {
+                const tempoSalvo = localStorage.getItem("musicTime");
+                if (tempoSalvo && musica.currentTime === 0) {
+                    musica.currentTime = parseFloat(tempoSalvo);
+                }
+                musica.play().catch(() => { console.log("Autoplay aguardando interação."); });
+            }
+
+            musica.addEventListener("loadedmetadata", sincronizarETocar);
+            sincronizarETocar();
+            document.addEventListener("click", sincronizarETocar, { once: true });
+
+            setInterval(() => {
+                if (!musica.paused && musica.currentTime > 0) {
+                    localStorage.setItem("musicTime", musica.currentTime);
+                    
+                    if (musica.duration && musicProgressBar) {
+                        const porcentagem = (musica.currentTime / musica.duration) * 100;
+                        musicProgressBar.style.width = `${porcentagem}%`;
+                    }
+                }
+            }, 250);
+        }
+
+        window.toggleMusic = function() {
+            if (!musica) return;
+            musica.muted = !musica.muted;
+            
+            if (musica.muted) {
+                if (iconeMusica) iconeMusica.className = "fa-solid fa-volume-xmark";
+            } else {
+                if (iconeMusica) iconeMusica.className = "fa-solid fa-volume-high";
+            }
+            localStorage.setItem("musicMuted", musica.muted);
+        };
+
+        // ==========================================
+        // 2. CURSOR CUSTOMIZADO E INTERAÇÕES
+        // ==========================================
+        const cursor = document.querySelector(".cursor");
+        if (cursor) {
+            document.addEventListener("mousemove", (e) => {
+                if (e.clientX >= window.innerWidth - 16 || e.clientY >= window.innerHeight - 5 || e.clientX <= 5 || e.clientY <= 5) {
+                    cursor.style.display = "none";
+                } else {
+                    cursor.style.display = "block";
+                }
+                cursor.style.left = e.clientX + "px";
+                cursor.style.top = e.clientY + "px";
+            });
+
+            document.addEventListener("mouseleave", () => {
+                cursor.style.display = "none";
+            });
+
+            const hoverItems = document.querySelectorAll("a, button, .setup-card, .hardware-card");
+            hoverItems.forEach(item => {
+                item.addEventListener("mouseenter", () => { cursor.classList.add("active"); });
+                item.addEventListener("mouseleave", () => { cursor.classList.remove("active"); });
+            });
+
+            const videoWrappers = document.querySelectorAll(".video-wrapper");
+            videoWrappers.forEach(wrapper => {
+                wrapper.addEventListener("mouseenter", () => { cursor.style.display = "none"; });
+                wrapper.addEventListener("mouseleave", () => { cursor.style.display = "block"; });
+            });
+        }
+    });
+
+    // ==========================================
+    // 3. FUNÇÃO DE COPIAR TEXTO DOS CARDS
+    // ==========================================
+    function copiarTexto(card) {
+        const titulo = card.querySelector("h3")?.innerText || "";
+        const descricao = card.querySelector("p")?.innerText || "";
+        let texto = titulo;
+
+        if (descricao) { texto += " - " + descricao; }
+
+        navigator.clipboard.writeText(texto).then(() => {
+            const antiga = card.querySelector(".copy-mini");
+            if (antiga) { antiga.remove(); }
+
+            const notif = document.createElement("div");
+            notif.className = "copy-mini";
+            notif.innerHTML = `<i class="fa-solid fa-check"></i> Copiado`;
+            card.appendChild(notif);
+
+            notif.offsetHeight; // Force Repaint
+
+            setTimeout(() => {
+                notif.style.opacity = "0";
+                notif.style.transform = "translateY(-5px)";
+                setTimeout(() => { notif.remove(); }, 250);
+            }, 1200);
+        });
+    }
+    </script>
+</body>
+</html>
