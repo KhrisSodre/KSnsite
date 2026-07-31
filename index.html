@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>KSn | Profile</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="assets/img/avatar/logo perfil.png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Carter+One&display=swap"
+        rel="stylesheet"
+    >
+
+    <meta name="author" content="KSn">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://khrissodre.github.io/KSn/">
+    <meta property="og:title" content="KSn | Links Oficiais">
+
+    <meta
+        property="og:description"
+        content="Acesse minhas redes sociais, lives e setup."
+    >
+
+    <meta
+        property="og:image"
+        content="https://khrissodre.github.io/KSn/img/logo%20perfil.png"
+    >
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KSn | Profile">
+
+    <meta
+        name="twitter:description"
+        content="Player de Valorant. Links oficiais aqui."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://khrissodre.github.io/KSn/img/logo%20perfil.png"
+    >
+</head>
+
+<body>
+
+    <div class="music-progress-container">
+        <div
+            id="music-progress-bar"
+            class="music-progress-fill"
+        ></div>
+    </div>
+
+    <div class="particles" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="cursor" aria-hidden="true"></div>
+
+    <header>
+        <nav class="navbar" aria-label="Navegação principal">
+
+            <a href="index.html" class="active">Profile</a>
+            <a href="setup.html">Setup</a>
+            <a href="setting.html">Valorant</a>
+            <a href="video.html">Vídeos</a>
+
+            <div class="divisor" aria-hidden="true"></div>
+
+            <span
+                id="music-status"
+                class="music-text-status"
+            >
+                NEFFEX - Baller
+            </span>
+
+            <button
+                type="button"
+                onclick="toggleMusic()"
+                class="botao-musica"
+                aria-label="Ativar ou desativar música"
+            >
+                <i
+                    id="img-music"
+                    class="fa-solid fa-volume-xmark"
+                    aria-hidden="true"
+                ></i>
+            </button>
+
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="profile-header">
+
+            <div class="foto-container">
+                <img
+                    class="foto-perfil"
+                    src="assets/img/avatar/logo perfil.png"
+                    alt="Foto de perfil de KSn"
+                >
+            </div>
+
+            <h1>KSn</h1>
+
+            <p class="location">
+                <img
+                    src="assets/img/icones/pino-de-localizacao.png"
+                    alt=""
+                    aria-hidden="true"
+                >
+                ES
+            </p>
+
+            <div class="social-links">
+
+                <a
+                    href="https://www.twitch.tv/ksnx_"
+                    class="social-btn twitch"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitch de KSn"
+                >
+                    <i class="fab fa-twitch" aria-hidden="true"></i>
+                </a>
+
+                <a
+                    href="https://www.instagram.com/khrissodre/"
+                    class="social-btn instagram"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram de KSn"
+                >
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+
+                <a
+                    href="https://x.com/KsSodre"
+                    class="social-btn twitter"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Perfil de KSn no X"
+                >
+                    <i class="fab fa-x-twitter" aria-hidden="true"></i>
+                </a>
+
+                <a
+                    href="https://discord.gg/SvCsMb9gwh"
+                    class="social-btn discord"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Servidor de KSn no Discord"
+                >
+                    <i class="fab fa-discord" aria-hidden="true"></i>
+                </a>
+
+                <div class="copy-wrapper">
+                    <a
+                        href="#"
+                        data-copy="KSn#027"
+                        onclick="event.preventDefault(); copiarRiotID(this, this.dataset.copy)"
+                        aria-label="Copiar Riot ID KSn#027"
+                    >
+                    
+                        <img
+                            src="assets/img/icones/logo riot.png"
+                            alt=""
+                            class="riot-icon"
+                        >
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <h2 class="bio">
+            Não sei o que dizer aqui, depois eu faço...
+        </h2>
+
+    </main>
+
+    <audio id="musica" loop preload="auto">
+        <source
+            src="assets/audio/NEFFEX - Baller.mp3"
+            type="audio/mpeg"
+        >
+    </audio>
+
+    <script src="assets/js/global.js"></script>
+    <script src="assets/js/index.js"></script>
+
+</body>
+</html>
